@@ -15,7 +15,7 @@ permissions:
 
 jobs:
   sync-publish-repo:
-    runs-on: ubuntu-latest
+    runs-on: blacksmith-4vcpu-ubuntu-2404
     steps:
       - name: Checkout source repo
         uses: actions/checkout@v6
