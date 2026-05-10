@@ -65,7 +65,7 @@ jobs:
           )
         )
       }}
-    runs-on: ubuntu-24.04
+    runs-on: blacksmith-4vcpu-ubuntu-2404
     steps:
       - name: Require maintainer-level repository access
         uses: actions/github-script@v8
@@ -89,7 +89,7 @@ jobs:
   resolve_request:
     name: Resolve Mantis request
     needs: authorize_actor
-    runs-on: ubuntu-24.04
+    runs-on: blacksmith-4vcpu-ubuntu-2404
     outputs:
       candidate_ref: ${{ steps.resolve.outputs.candidate_ref }}
       crabbox_provider: ${{ steps.resolve.outputs.crabbox_provider }}
@@ -191,7 +191,7 @@ jobs:
     name: Validate candidate ref
     needs: resolve_request
     if: ${{ needs.resolve_request.outputs.should_run == 'true' }}
-    runs-on: ubuntu-24.04
+    runs-on: blacksmith-4vcpu-ubuntu-2404
     outputs:
       candidate_revision: ${{ steps.validate.outputs.candidate_revision }}
     steps:
@@ -246,7 +246,7 @@ jobs:
     name: Run Telegram live QA with Crabbox evidence
     needs: [resolve_request, validate_ref]
     if: ${{ needs.resolve_request.outputs.should_run == 'true' }}
-    runs-on: ubuntu-24.04
+    runs-on: blacksmith-4vcpu-ubuntu-2404
     timeout-minutes: 180
     environment: qa-live-shared
     outputs:
