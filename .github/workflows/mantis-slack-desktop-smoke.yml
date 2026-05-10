@@ -63,7 +63,7 @@ env:
 jobs:
   authorize_actor:
     name: Authorize workflow actor
-    runs-on: ubuntu-24.04
+    runs-on: blacksmith-4vcpu-ubuntu-2404
     steps:
       - name: Require maintainer-level repository access
         uses: actions/github-script@v8
@@ -87,7 +87,7 @@ jobs:
   validate_ref:
     name: Validate candidate ref
     needs: authorize_actor
-    runs-on: ubuntu-24.04
+    runs-on: blacksmith-4vcpu-ubuntu-2404
     outputs:
       candidate_revision: ${{ steps.validate.outputs.candidate_revision }}
     steps:
@@ -141,7 +141,7 @@ jobs:
   run_slack_desktop:
     name: Run Slack desktop smoke
     needs: validate_ref
-    runs-on: ubuntu-24.04
+    runs-on: blacksmith-4vcpu-ubuntu-2404
     timeout-minutes: 180
     environment: qa-live-shared
     steps:
